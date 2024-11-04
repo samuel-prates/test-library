@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\LoanCreated;
 use App\Models\Book;
 use App\Models\Loan;
 use App\Models\User;
@@ -55,6 +56,8 @@ class LoanController extends Controller
                 'loan_date' => now(),
                 'return_date' => now()->addDays(30),
             ]);
+            // Dispara o evento para enviar o e-mail
+            LoanCreated::dispatch($loan);
 
             return redirect()->route('loan.index')
                 ->with('success', 'Loan created successfully.')
