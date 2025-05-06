@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Author>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Book>
  */
-class AuthorFactory extends Factory
+class BookFactory extends Factory
 {
     /**
      * The current password being used by the factory.
@@ -22,8 +22,8 @@ class AuthorFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'birthday' => fake()->date(),
+            'title' => fake()->sentence(3),
+            'year' => fake()->year()
         ];
     }
 }
